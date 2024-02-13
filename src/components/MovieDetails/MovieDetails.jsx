@@ -5,7 +5,7 @@ import {
   Outlet,
   useLocation,
 } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect , Suspense } from 'react';
 import { getMoviesById } from 'components/Api/api';
 import css from './movieDetails.module.css';
 import Loader from 'components/Loader/Loader';
@@ -79,21 +79,15 @@ const MovieDetails = () => {
           </div>
           <div className={css.info_conteiner}>
             <h3 className={css.subtitel}>Additional information:</h3>
-            <Link
-              to="coast"
-              state={{ from}}
-              className={css.link_info}
-            >
-              Coast
-            </Link>
-            <Link
-              to="reviews"
-              state={{ from }}
-              className={css.link_info}
-            >
-              Reviews
-            </Link>
-            <Outlet />
+            <Suspense Suspense fallback={<Loader />}>
+              <Link to="coast" state={{ from }} className={css.link_info}>
+                Coast
+              </Link>
+              <Link to="reviews" state={{ from }} className={css.link_info}>
+                Reviews
+              </Link>
+              <Outlet />
+            </Suspense>
           </div>
         </div>
       )}
