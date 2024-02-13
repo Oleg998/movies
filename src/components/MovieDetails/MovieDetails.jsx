@@ -79,13 +79,13 @@ const MovieDetails = () => {
           </div>
           <div className={css.info_conteiner}>
             <h3 className={css.subtitel}>Additional information:</h3>
+            <Link to="coast" state={{ from }} className={css.link_info}>
+              Coast
+            </Link>
+            <Link to="reviews" state={{ from }} className={css.link_info}>
+              Reviews
+            </Link>
             <Suspense Suspense fallback={<Loader />}>
-              <Link to="coast" state={{ from }} className={css.link_info}>
-                Coast
-              </Link>
-              <Link to="reviews" state={{ from }} className={css.link_info}>
-                Reviews
-              </Link>
               <Outlet />
             </Suspense>
           </div>
