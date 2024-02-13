@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { lazy } from 'react';
 
-
+const NotFound =lazy(()=>( 'pages/NotFound/NotFound'));
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
@@ -16,6 +16,7 @@ const Coast = lazy(() =>
 );
 const Reviews = lazy(() =>
   import('pages/SingleMoviesPageReviews/SingleMoviesPageReviews')
+
 );
 export const App = () => {
   return (
@@ -30,7 +31,7 @@ export const App = () => {
             <Route path="coast" element={<Coast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<HomePage />} />
+          <Route path="*" element={<NotFound/>} />
         </Route>
       </Routes>
     </div>
