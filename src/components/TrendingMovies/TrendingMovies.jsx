@@ -1,6 +1,7 @@
 import { getTrendig } from 'components/Api/api';
 import { useEffect, useState } from 'react';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
+import Loader from 'components/Loader/Loader';
 
 const TrendingMovies = () => {
   const [state, setState] = useState();
@@ -11,7 +12,7 @@ const TrendingMovies = () => {
     const fetchTrendingMovies = async () => {
       try {
         const { data } = await getTrendig();
-
+        setIsLoading(true);
         setState(prevState => data.results);
 
         setIsLoading(true);
@@ -28,7 +29,13 @@ const TrendingMovies = () => {
   
 
   
-  return (<div>{state && <ImageGallery items={state} />}; </div>)
+  return (
+    <div>
+      {error && <p>..............{error}..................</p>}
+      {isLoading && <Loader></Loader>}
+      {state && <ImageGallery items={state} />};
+    </div>
+  );
     
     
 };

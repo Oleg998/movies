@@ -1,9 +1,10 @@
 import css from './movies-page.module.css';
+import Movies from 'components/Movies/Movies';
 
 const MoviesPage = () => {
   return (
     <div>
-      <h1>Movies Page </h1>
+      <Movies/>
     </div>
   );
 };

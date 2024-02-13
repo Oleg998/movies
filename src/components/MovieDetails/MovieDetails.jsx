@@ -1,14 +1,26 @@
-import { Link, useParams } from 'react-router-dom';
+import {
+  Link,
+  useParams,
+  useNavigate,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMoviesById } from 'components/Api/api';
-import css from './single-movies.module.css';
+import css from './movieDetails.module.css';
+import Loader from 'components/Loader/Loader';
+import notFound from '../ImageGallery/cat.jpg';
 
-const SingleMovies = () => {
+const MovieDetails = () => {
   const [state, setState] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.form || '/';
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -27,12 +39,23 @@ const SingleMovies = () => {
   const imgUrl = 'https://image.tmdb.org/t/p/w440_and_h660_face/';
   return (
     <>
+      {error && <p>..............{error}..................</p>}
+      {isLoading && <Loader></Loader>}
+      <button
+        className={css.btn_back}
+        onClick={() => navigate(from)}
+        type="button"
+      >
+        &lt;&lt; Back
+      </button>
       {state && (
         <div className={css.conteiner}>
           <div className={css.wrapper}>
             <img
               className={css.postrer_film}
-              src={imgUrl + state.backdrop_path}
+              src={
+                state.backdrop_path ? imgUrl + state.backdrop_path : notFound
+              }
               alt={state.title}
             />
             <div className={css.cointeiner_info}>
@@ -54,11 +77,23 @@ const SingleMovies = () => {
               </ul>
             </div>
           </div>
-
           <div className={css.info_conteiner}>
             <h3 className={css.subtitel}>Additional information:</h3>
-            <Link className={css.link_info}>Coast</Link>
-            <Link className={css.link_info}>Reviews</Link>
+            <Link
+              to="coast"
+              state={{ from}}
+              className={css.link_info}
+            >
+              Coast
+            </Link>
+            <Link
+              to="reviews"
+              state={{ from }}
+              className={css.link_info}
+            >
+              Reviews
+            </Link>
+            <Outlet />
           </div>
         </div>
       )}
@@ -66,4 +101,4 @@ const SingleMovies = () => {
   );
 };
 
-export default SingleMovies;
+export default MovieDetails;

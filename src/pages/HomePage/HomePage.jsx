@@ -1,17 +1,12 @@
-import css from "./home-page.module.css"
-import TrendingMovies from "components/TrendingMovies/TrendingMovies";
 
-
+import TrendingMovies from 'components/TrendingMovies/TrendingMovies';
 
 const HomePage = () => {
-    return (
-        <div>
-            <h1>
-                Home Page 
-            </h1>
-            <TrendingMovies/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <TrendingMovies />
+    </div>
+  );
+};
 
-export default HomePage ; 
+export default HomePage;
