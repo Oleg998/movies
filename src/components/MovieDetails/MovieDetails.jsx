@@ -20,7 +20,7 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.form || '/';
+   const from = location.state?.from || '/';
 
   useEffect(() => {
     const fetchMovies = async () => {
