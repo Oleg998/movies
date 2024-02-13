@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { lazy, Suspense } from 'react';
-import Loader from './Loader/Loader';
+import { lazy } from 'react';
+
 
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
@@ -21,7 +21,7 @@ export const App = () => {
   return (
     <div>
       <ToastContainer autoClose={5000} />
-      <Suspense fallback={Loader}>
+    
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<HomePage />} />
@@ -33,7 +33,7 @@ export const App = () => {
             </Route>
           </Route>
         </Routes>
-      </Suspense>
+     
     </div>
   );
 };
