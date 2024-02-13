@@ -1,4 +1,4 @@
-import css from './movies-page.module.css';
+
 import Movies from 'components/Movies/Movies';
 
 const MoviesPage = () => {

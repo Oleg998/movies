@@ -22,10 +22,10 @@ const TrendingMovies = () => {
         setIsLoading(false);
       }
     };
-      if(!state){
-      fetchTrendingMovies();}
-    
-  }, []);
+    if (!state) {
+      fetchTrendingMovies();
+    }
+  }, [state]);
   
 
   
