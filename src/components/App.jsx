@@ -21,19 +21,18 @@ export const App = () => {
   return (
     <div>
       <ToastContainer autoClose={5000} />
-    
-        <Routes>
-          <Route path="/" element={<SharedLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="movies" element={<MoviesPage />} />
-            <Route path="*" element={<HomePage />} />
-            <Route path="movies/:id" element={<SingleMoviesPage />}>
-              <Route path="coast" element={<Coast />} />
-              <Route path="reviews" element={<Reviews />} />
-            </Route>
+
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="movies" element={<MoviesPage />} />
+          <Route path="movies/:id" element={<SingleMoviesPage />}>
+            <Route path="coast" element={<Coast />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
-        </Routes>
-     
+          <Route path="*" element={<HomePage />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
