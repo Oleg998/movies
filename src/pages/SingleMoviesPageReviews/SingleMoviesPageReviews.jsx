@@ -26,16 +26,16 @@ const Reviews = () => {
     fetchReviews();
   }, [id]);
 
-   const elements = reviews.map(({ content,
-id }) => (
-   <p key={id}>{content}</p>
-  ));
+  const elements = reviews.map(({ content, id }) => <p key={id}>{content}</p>);
 
   return (
     <div>
       {error && <NotFound></NotFound>}
       {isLoading && <Loader></Loader>}
-      {elements}
+      {reviews && <div>{elements}</div>}
+      {!reviews.length && (
+        <h2>Sorry, there are no reviews in the database for this film.</h2>
+      )}
     </div>
   );
 };
