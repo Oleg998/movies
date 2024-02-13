@@ -80,14 +80,14 @@ const MovieDetails = () => {
           <div className={css.info_conteiner}>
             <h3 className={css.subtitel}>Additional information:</h3>
             <Link
-              to="coast"
+              to={"coast"}
               state={{ from}}
               className={css.link_info}
             >
               Coast
             </Link>
             <Link
-              to="reviews"
+              to={"reviews"}
               state={{ from }}
               className={css.link_info}
             >
