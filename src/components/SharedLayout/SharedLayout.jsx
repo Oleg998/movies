@@ -7,7 +7,7 @@ const SharedLayout =()=> {
 return (
   <>
     <MainMenu />
-    <Suspense fallback={Loader}>
+    <Suspense fallback={<Loader/>}>
       <Outlet />
     </Suspense>
   </>
