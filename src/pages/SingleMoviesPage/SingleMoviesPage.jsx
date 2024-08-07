@@ -1,8 +1,9 @@
 
 import MovieDetails from 'components/MovieDetails/MovieDetails';
+import css from "./single-movies-page.module.css"
 const SingleMoviesPage = () => {
   return (
-    <div>
+    <div className={css.bg}>
       <MovieDetails />
       
     </div>

@@ -4,7 +4,7 @@ import { getReviewsById } from 'components/Api/api';
 
 import Loader from 'components/Loader/Loader';
 import NotFound from 'pages/NotFound/NotFound';
-
+import css from "./SingleMoviesPageReviews.module.css"
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,9 +32,9 @@ const Reviews = () => {
     <div>
       {error && <NotFound></NotFound>}
       {isLoading && <Loader></Loader>}
-      {reviews && <div>{elements}</div>}
+      {reviews && <div className={css.color}>{elements}</div>}
       {!reviews.length && (
-        <h2>Sorry, there are no reviews in the database for this film.</h2>
+        <h2 className={css.color} >Sorry, there are no reviews in the database for this film.</h2>
       )}
     </div>
   );
